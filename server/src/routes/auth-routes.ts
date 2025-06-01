@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 export const login = async (req: Request, res: Response) => {
   // TODO: If the user exists and the password is correct, return a JWT token
   const { username, password } = req.body;
-
+  console.log('hello');
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password are required' });
   }
@@ -23,7 +23,7 @@ export const login = async (req: Request, res: Response) => {
     }
 
     // Create JWT token
-    const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET as string, {
+    const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET_KEY as string, {
       expiresIn: '1h',
     });
     res.json({ token });
