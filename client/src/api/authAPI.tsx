@@ -11,6 +11,7 @@ const login = async (userInfo: UserLogin) => {
   });
 
   if (!response.ok) {
+  
     throw new Error('Login failed');
   }
 
